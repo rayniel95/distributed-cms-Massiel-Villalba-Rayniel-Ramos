@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<p>
+    <a href="{{ url_for('index') }}">Atras</a>
+</p>
+
+<p>Paginas en la red actual:</p>
+
+<ul>
+
+    {% for page in page_list %}
+        <li>
+            <a href="{{ url_for('viewPage', page_name=page[0]) }}"> {{ page[0] }}  instances: {{ page[1] }} </a>
+        </li>
+    {% endfor %}
+
+</ul>
+
+</body>
+</html>

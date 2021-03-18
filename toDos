@@ -1,0 +1,5 @@
+# todo tener presente que los numeros en python son tan grandes como se quiera por tanto a la hora de sumar algo o
+# restar algo a un id, puede salirse del rango de 0, (2 pow m) - 1, por lo que siempre que se realice una operacion de
+# este tipo se debe trabajar modulo 2 pow m
+
+# todo ver que es lo que devuelve el proxy de pyro para actualizar los annotations y los docstrings
