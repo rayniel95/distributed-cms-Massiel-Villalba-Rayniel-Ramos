@@ -1,0 +1,59 @@
+FROM alpine:3.12
+# TODO - try to reduce image size
+# TODO - try use a ubuntu image and ansible apt distribution instead python installation
+# TODO - try to use alpine-python
+# TODO - try to use ubuntu-python
+# TODO - try to use alpine with ansible package
+# NOTE - i dont understand why it have 440mb maybe is installed unnecesary packages
+# quizas esta instalando paquetes recomendados pero no necesarios, ver eso en
+# las opciones del apk lo mismo para el pip, lo otro que puede ser son los build
+# del criptography, si solo son necesarios los build se puede eliminar el src
+RUN export HTTP_PROXY="http://192.168.49.1:8282" \
+    && export http_proxy="http://192.168.49.1:8282" \
+    https_proxy="http://192.168.49.1:8282" \
+    && apk --no-cache add \
+        python3\
+        py3-pip \
+        openssl \
+        ca-certificates \
+        openssh-client \
+        && \
+    apk --no-cache add --virtual build-dependencies \
+        python3-dev \
+        gcc \
+        cargo \
+        libffi-dev \
+        openssl-dev \
+        musl-dev \
+        build-base \ 
+    && pip3 install --upgrade pip cffi && \
+    pip3 install ansible==2.9.15 --no-cache-dir \
+    && pip3 install --upgrade pywinrm --no-cache-dir && \
+    apk del build-dependencies \
+    && rm -rf /var/cache/apk/* \
+    && unset HTTP_PROXY http_proxy https_proxy
+# TODO - add --no-cache-dir to line 29
+RUN mkdir /ansible && \
+    mkdir -p /etc/ansible && \
+    echo 'localhost' > /etc/ansible/hosts
+
+RUN export HTTP_PROXY="http://192.168.49.1:8282" \
+    && export http_proxy="http://192.168.49.1:8282" \
+    https_proxy="http://192.168.49.1:8282" \
+    && pip3 install docker --no-cache-dir
+
+# creo que para sshpass se necesita un server de ssh y hay un problema de 
+# seguridad, creo q la pass se envia no encrypted
+# RUN apk --no-cache add \
+#     sshpass \
+#     rsync \
+#     git \
+#     sudo \
+#     && pip3 install mitogen jmespath --no-cache-dir
+
+
+# RUN pip3 install ansible-lint --no-cache-dir
+
+WORKDIR /ansible
+
+CMD [ "ansible-playbook"]
