@@ -2,7 +2,7 @@
   roles:
     - role: start_containers
       vars:
-        wait_time: 30
+        wait_time: 120
         cantity_containers: 5
         image_path: /ansible/ # FIXME - fix this path, must be relative
      

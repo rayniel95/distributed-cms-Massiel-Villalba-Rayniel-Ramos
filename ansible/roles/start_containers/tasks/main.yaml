@@ -10,16 +10,16 @@
 - name: create_network
   docker_network:
     name: ray_net
-# FIXME - por alguna razon esta haciendo attach a otra red, se deben purgar todas las
-# redes primero
+
 - name: create_containers
   docker_container:
     image: rayniel95/cmsnode
     name: "node_{{ index }}"
+    networks_cli_compatible: true
     networks:
       - name: ray_net
-    ports:
-      - "500{{ index }}: 5000"
+    published_ports:
+      - "500{{ index }}:5000"
   loop: "{{ range(cantity_containers)|list }}"
   loop_control:
     pause: "{{ wait_time }}"
