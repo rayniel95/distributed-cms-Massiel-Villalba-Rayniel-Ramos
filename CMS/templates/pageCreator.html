@@ -1,0 +1,13 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Designer</title>
+    </head>
+    <body>
+    <h2 >Crear pagina</h2>
+    <p>Designer: {{ designer }}</p>
+    
+    {% import "bootstrap/wtf.html" as wtf %}
+    {{ wtf.quick_form(form) }}
+    </body>
+</html>

@@ -1,0 +1,10 @@
+trabajar con los file system de cada so, porq dicen que pueden poner widgets de gbs y hay que aprovechar algo de
+estos file system
+
+ver los del lock de las paginas para que dos usuarios no las puedan modificar al mismo tienpo, problema de consenso,
+lamport??????
+
+de que tamano es el espacio de sh1, y cual es el tamano recomendable de los ids para el proyecto??????? 512bits?????
+
+modificar la estructura del proyecto para mejor belleza ver libro de flask penultimo capitulo
+se le puede agregar typechaking a los parametros de la plantilla de codigo del widget

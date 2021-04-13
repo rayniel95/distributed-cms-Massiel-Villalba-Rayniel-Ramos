@@ -51,9 +51,6 @@ RUN export HTTP_PROXY="http://192.168.49.1:8282" \
 #     sudo \
 #     && pip3 install mitogen jmespath --no-cache-dir
 
-
-# RUN pip3 install ansible-lint --no-cache-dir
-
 WORKDIR /ansible
 
 CMD [ "ansible-playbook"]

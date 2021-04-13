@@ -1,4 +1,8 @@
-- host: all
+- hosts: localhost # FIXME - agregar al inventario solo el localhost
   roles:
-    - start-containers
+    - role: start_containers
+      vars:
+        wait_time: 30
+        cantity_containers: 5
+        image_path: /ansible/ # FIXME - fix this path, must be relative
      

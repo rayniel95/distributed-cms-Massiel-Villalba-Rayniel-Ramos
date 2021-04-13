@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p>
+        <a href="{{ url_for('index') }}">Atras</a>
+    </p>
+
+    <p>Widgets en la red actual:</p>
+
+    <ul>
+
+        {% for widget in widget_list %}
+            <li>
+                {{ widget[0] }} params: {{ widget[1] }}
+            </li>
+        {% endfor %}
+
+    </ul>
+
+</body>
+</html>
