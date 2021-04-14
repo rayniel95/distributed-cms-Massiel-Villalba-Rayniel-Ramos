@@ -1,56 +1,15 @@
 version: "3.7"
-# dont use this because the nodes take some time to start, and the containers
-# will be start at the same time, so the nodes will be create differents rings
+
 services: 
 
-  node1:
-    build: ./
-    networks: 
-      - raynet
-    ports: 
-      - "5001:5000"
-
-  node2:
-    build: ./
-    depends_on: 
-      - node1
-    networks: 
-      - raynet
-    ports: 
-      - "5002:5000"
-
-  node3:
-    build: ./
-    depends_on: 
-      - node1
-      - node2
-    networks: 
-      - raynet
-    ports: 
-      - "5003:5000"
-
-  node4:
-    build: ./
-    depends_on: 
-      - node1
-      - node2
-      - node3
-    networks: 
-      - raynet
-    ports: 
-      - "5004:5000"
-
-  node5:
-    build: ./
-    depends_on: 
-      - node1
-      - node2
-      - node3
-      - node4
-    networks: 
-      - raynet
-    ports: 
-      - "5005:5000"
-
-networks: 
-  raynet:
+  ansible:
+    build:
+      context: ./
+      dockerfile: Dockerfile-ansible-python
+    image: rayniel95/ansible:1.1-alpine-plus-python
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "./:/ansible"
+    command: ansible-playbook -i 127.0.0.1 ./ansible/playbook.yaml
+    container_name: ansible
+# FIXME - poner el localhost directo en el inventario de la imagen
