@@ -1,0 +1,21 @@
+#cloud-config
+ssh_authorized_keys:
+    - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCu8ttgapIOi7slNzC98ZNzx+87IpBIaD+mzHFUzTsvCQGVJ5cgTgysqTCiEHPWuqIpFyX+Y70+iArNn6qEpwmNl+K+33W4EWUJrOh0AsG2LEjP652I8k8AjU/otf5GFWphOEI2N2SZc91WXUXQ2EcKJ33ko+XpnhTQd4LwoYEtrAECjl9ztOtolvuTwn8lIy6/4QQV0YsmRDYtl5OG4qPUnCOpInXaMu0EXktOGnUNhwVL1OPtRCufVgDJCkqv/pJ8O01WQn7/am5/Bu49LFBzO9E+HnuZFjD+kHD912OS04EXRXTlpvI/ZBe6fqrHUrOqmpYz2e+VACixJo5djfSC/Ie4SgPF3XQpiGeRrIZK2Y2nQJJ6R38DydKdpjuTzmchFTcQlo54BBUkt3+EYr8cJWLjXx0LTryQx/TRmo8HmwVMhJ0Jm/aIfCE/gOXQmLDcg+isPZfXs9ZF7YdMdijuvUXZbHraUSvdJUT56bc45QFCyANlcIGEGxvt0xSnB3U= ray@ray-Lenovo-IdeaPad-Z510
+    - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDAq6nVi8GpcODXn7b2I9GrdPFznAOkVP5cL9cbmvV/RR1h6C46eYz/Gn06WUMwwue+KxNkSurq5hfrO79dAwf6oI4Nupg3qqg+QH70bMSHN6X3TQ0HlYu9EUw+/ewe9150pINJ9KbkTq7COa2ZUOA1LA/jfOLJd7ZoqbxKuBHFppMkppdLgWyS7kQnARMVfgAaFix58RiNU545BIUYxY8F7nRseaWp7ln9X5zp4pOZ/lMHvK/8WB63Z+iDNGCcr4Ab6PS8zikz4EPclBbVpMLhLkJ0toEi+DF+7H6ffqYmERGvq2h1gVIPx8sA1EiYje87MciBpnITIgL9XXyLLb0i9B2mx3y93l4tuT2up6hl/kKBcCs4A+6TTruIf3O4R6HG/FgNIyyh9sxptJfzvgXKwKVXvlWNcQ3wN5RMwUqnFRRSl2T+iC/ZFYWmdi5SRv67UCgTUEMcP97gELp3WdFyAkucg90M0EqxULm40OymOgxnza9MVSkqLNZuy7nxPV0= ray@ray-Lenovo-IdeaPad-Z510
+
+rancher:
+  
+  network:
+    
+    http_proxy: http://192.168.49.1:8282
+    https_proxy: http://192.168.49.1:8282
+    no_proxy: localhost,127.0.0.1,192.168.49.234
+    
+    dns:
+      nameservers:
+      - 8.8.8.8
+      - 8.8.4.4
+  
+  docker:
+    insecure_registry:
+      - "192.168.49.234"
