@@ -70,4 +70,6 @@ Ansible playbook will create 5 chords nodes accessible through localhost ports:
 
 Start removing containers. Select a random container, remove it, wait one minute, select other container, remove it, wait one minute, select other container, remove it, wait one minute, go to `Lista de paginas`. The page will remain available!!!!! This is because system nodes can crash but data will remain (data is replicated). It is a fault tolerant system!!!!!!!!!!!!
 
+**Note: I can not create a Kubernetes cluster because broadcast problem. It is a bit difficult to create a Kubernetes cluster using broadcast without knowledge about broadcasting ports.**
+
 [1]: https://en.wikipedia.org/wiki/Chord_(peer-to-peer)#:~:text=In%20computing%2C%20Chord%20is%20a,to%2Dpeer%20distributed%20hash%20table.&text=Chord%20specifies%20how%20keys%20are,node%20responsible%20for%20that%20key.
