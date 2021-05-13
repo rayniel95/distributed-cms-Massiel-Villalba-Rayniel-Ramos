@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: chord-node-rs-3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      node: node-3
+  template:
+    metadata:
+      labels:
+        app: chord-ring
+        node: node-3
+    spec:
+      containers:
+      - name: node3
+        image: 192.168.49.234:5000/rayniel95/cmsnode

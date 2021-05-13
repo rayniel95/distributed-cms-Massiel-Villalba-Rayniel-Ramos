@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: chord-node-rs-1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      node: node-1
+  template:
+    metadata:
+      labels:
+        app: chord-ring
+        node: node-1
+    spec:
+      containers:
+      - name: node1
+        image: 192.168.49.234:5000/rayniel95/cmsnode
+        ports:
+        - containerPort: 5000
+          protocol: TCP
+

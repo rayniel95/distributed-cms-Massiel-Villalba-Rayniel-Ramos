@@ -1,29 +1,14 @@
 # If you intened to deploy Kubernetes in an air-gapped environment,
 # please consult the documentation on how to configure custom RKE images.
 nodes:
-- address: 192.168.49.26
+- address: 192.168.49.35
   port: "22"
   internal_address: ""
   role:
   - controlplane
   - worker
   - etcd
-  hostname_override: ""
-  user: rancher
-  docker_socket: /var/run/docker.sock
-  ssh_key: ""
-  ssh_key_path: /home/ray/Documents/distributed-cms-Massiel-Villalba-Rayniel-Ramos/artifacts/key-no-pass
-  ssh_cert: ""
-  ssh_cert_path: ""
-  labels: {}
-  taints: []
-- address: 192.168.49.184
-  port: "22"
-  internal_address: ""
-  role:
-  - worker
-  - etcd
-  hostname_override: ""
+  # hostname_override: rancher1
   user: rancher
   docker_socket: /var/run/docker.sock
   ssh_key: ""
@@ -174,6 +159,7 @@ private_registries:
     # user: Username
     # password: password
     is_default: true
+
 ingress:
   provider: ""
   options: {}
@@ -196,7 +182,7 @@ cloud_provider:
   name: ""
 prefix_path: ""
 win_prefix_path: ""
-addon_job_timeout: 0
+addon_job_timeout: 50
 bastion_host:
   address: ""
   port: ""
